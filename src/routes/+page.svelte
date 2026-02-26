@@ -9,9 +9,9 @@
   <hr style="padding-bottom:1rem" />
   <h4>Shows</h4>
   <p>
-    Death Note, JJK, Stranger Things, Rick and Morty, Loki, Gravity Falls, The Owl House, Avatar: The Last Airbender, Infinity Train, Agents
-    of SHIELD, Where on Earth is Carmen Sandiego (1994), Carmen Sandiego (2019), Scott Pilgrim Takes Off, Devil May Cry, The Flash, Lab Rats, Sonic X, Love Death + Robots, Raising Dion,
-    Manifest, Solar Opposites, Inside Job, Mystery Incorporated, Ben 10 (Classic), Cyberpunk Edgerunners, Terror in Resonance
+    Death Note, JJK, Stranger Things, Hunter x Hunter, The Summer Hikaru Died, Loki, Gravity Falls, The Owl House, Avatar: The Last Airbender, Infinity Train, Agents
+    of SHIELD, Where on Earth is Carmen Sandiego (1994), Carmen Sandiego (2019), Scott Pilgrim Takes Off, Devil May Cry, Rick and Morty, The Flash, Lab Rats, Sonic X, Love Death + Robots, Raising Dion,
+    Manifest, Solar Opposites, Inside Job, Mystery Incorporated, Ben 10 (Classic), Cyberpunk Edgerunners, Terror in Resonance, Saiki K, The Devil is a Part-Timer
   </p>
   <h4>Movies</h4>
   <p>
@@ -27,7 +27,7 @@
   <p>
     Minecraft, Cyberpunk 2077, DOOM Eternal, Risk of Rain 2, Geometry Dash, It
     Takes Two, Split Fiction, Stray, Celeste, Portal and Portal 2, Forza Horizon 4 and 5,
-    Castle Crashers, Wii: Super Mario Galaxy and Super Mario Galaxy 2, Multiplayer Party Games: Rounds, SpiderHeck, Bopl Battle
+    Castle Crashers, Undertale, Wii: Super Mario Galaxy and Super Mario Galaxy 2, Multiplayer Party Games: Rounds, SpiderHeck, Bopl Battle
   </p>
 </div>
 
