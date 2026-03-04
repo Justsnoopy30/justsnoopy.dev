@@ -21,35 +21,64 @@
 	});
 	
 	/* Moving gradient background */
-	// import { onMount } from 'svelte';
-	// onMount(() => {
-	//   const interBubble = document.querySelector('.interactive');
-	//   let curX = 0;
-	//   let curY = 0;
-	//   let tgX = 0;
-	//   let tgY = 0;
+	import { onMount } from 'svelte';
+	onMount(() => {
+	  const interBubble = document.querySelector('.interactive');
+	  const gradientBg = document.querySelector('.gradient-bg');
+	  let curX = 0;
+	  let curY = 0;
+	  let tgX = 0;
+	  let tgY = 0;
+	  let mouseTimeout;
 	
-	//   function move() {
-	//       curX += (tgX - curX) / 20;
-	//       curY += (tgY - curY) / 20;
-	//       interBubble.style.transform = `translate(${Math.round(curX)}px, ${Math.round(curY)}px)`;
-	//       requestAnimationFrame(() => {
-	//           move();
-	//       });
-	//   }
+	  function handleActivity() {
+	      if (gradientBg) {
+	          gradientBg.classList.remove('visible');
+	      }
+
+	      clearTimeout(mouseTimeout);
+	      mouseTimeout = setTimeout(() => {
+	          if (gradientBg) {
+	              gradientBg.classList.add('visible');
+	          }
+	      }, 3000); // Wait for 3 seconds of inactivity
+	  }
+
+	  function move() {
+	      curX += (tgX - curX) / 20;
+	      curY += (tgY - curY) / 20;
+	      if (interBubble) {
+	          interBubble.style.transform = `translate(${Math.round(curX)}px, ${Math.round(curY)}px)`;
+	      }
+	      requestAnimationFrame(() => {
+	          move();
+	      });
+	  }
 	
-	//   window.addEventListener('mousemove', (event) => {
-	//       tgX = event.clientX;
-	//       tgY = event.clientY;
-	//   });
+	  window.addEventListener('mousemove', (event) => {
+	      tgX = event.clientX;
+	      tgY = event.clientY;
+	      handleActivity();
+	  });
+
+	  window.addEventListener('scroll', handleActivity, { passive: true });
+	  window.addEventListener('touchmove', handleActivity, { passive: true });
+	  window.addEventListener('wheel', handleActivity, { passive: true });
 	
-	//   move();
-	// });
+	  // Start the timer on mount so it appears if the user starts idle
+	  mouseTimeout = setTimeout(() => {
+	      if (gradientBg) {
+	          gradientBg.classList.add('visible');
+	      }
+	  }, 2000);
+
+	  move();
+	});
 </script>
 
-<!-- <div>
-	<div class="gradient-bg"> -->
-		<!-- <svg xmlns="http://www.w3.org/2000/svg">
+<div>
+	<div class="gradient-bg">
+		<svg xmlns="http://www.w3.org/2000/svg">
 			<defs>
 				<filter id="goo">
 					<feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
@@ -61,8 +90,8 @@
 					<feBlend in="SourceGraphic" in2="goo" />
 				</filter>
 			</defs>
-		</svg> -->
-		<!-- <div class="gradients-container">
+		</svg>
+		<div class="gradients-container">
 			<div class="g1"></div>
 			<div class="g2"></div>
 			<div class="g3"></div>
@@ -71,7 +100,7 @@
 			<div class="interactive"></div>
 		</div>
 	</div>
-</div> -->
+</div>
 
 <div class="app">
 	<Header />
@@ -93,13 +122,17 @@
 		display: flex;
 		flex-direction: column;
 		min-height: 100vh;
+		width: 100%;
 
 		/* Combines with width: 100vh on header to prevent shifting between pages */
 		overflow-x: hidden;
 
-		position: absolute;
-		top: 0;
-		left: 0;
+		position: relative;
+		z-index: 1;
+
+		background: rgba(27, 27, 27, 0.4);
+		backdrop-filter: blur(20px);
+		-webkit-backdrop-filter: blur(20px);
 	}
 
 	main {
