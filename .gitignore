@@ -24,5 +24,6 @@ vite.config.ts.timestamp-*
 
 # Other
 static/covers
+static/music
 src/lib/music
 src/lib/no-git

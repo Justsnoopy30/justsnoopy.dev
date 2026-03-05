@@ -6,7 +6,7 @@
   // Sound Effect by <a href="https://pixabay.com/users/dragon-studio-38165424/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=382714">DRAGON-STUDIO</a> from <a href="https://pixabay.com/sound-effects//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=382714">Pixabay</a>
   import switch2Sound from "$lib/sounds/switch2.mp3";
   import { browser } from "$app/environment";
-  import { soc1 } from "$lib/no-git/soc";
+  import { soc1, soc2, soc3 } from "$lib/no-git/soc";
 
   let clientX = "-99px";
   let clientY = "-99px";

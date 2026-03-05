@@ -1,12 +1,15 @@
 <script>
   import MediaCard from "$lib/MediaCard.svelte";
   import TextCard from "$lib/TextCard.svelte";
+  import { writable } from 'svelte/store';
+
+  let flippedCard = writable(null);
 
   const shows = [
     { title: "Death Note", api: "omdb" },
     { title: "Jujutsu Kaisen" },
     { title: "Stranger Things" },
-    { title: "Hunter x Hunter", api: "tvmaze" },
+    { title: "Hunter x Hunter", api: "tvmaze", musicId: "faqmNf_fZlE"},
     { title: "The Summer Hikaru Died" },
     { title: "Loki" },
     { title: "Gravity Falls" },
@@ -63,12 +66,12 @@
     { title: "DOOM Eternal" },
     { title: "Risk of Rain 2" },
     { title: "Geometry Dash" },
-    { title: "It Takes Two" },
-    { title: "Split Fiction" },
+    { title: "It Takes Two", musicId: "2uK1cKPiqAs" },
+    { title: "Split Fiction", musicId: "wV1JFwdp7Vg" },
     { title: "Stray" },
     { title: "Celeste", id: "40963" },
     { title: "Portal" },
-    { title: "Portal 2" },
+    { title: "Portal 2", musicId: "st2d7IDaHic" },
     { title: "Forza Horizon 4" },
     { title: "Forza Horizon 5" },
     { title: "Castle Crashers" },
@@ -91,7 +94,7 @@
     <TextCard>
       <p>Hey there - I'm Justsnoopy30<br />
       I like to write code sometimes, and I love a fair bit of media and games too</p>
-      <a href="/soc" class="soc-link">?</a>
+      <a href="/soc" class="soc-link" tabindex=-1>?</a>
     </TextCard>
   </div>
 
@@ -99,7 +102,7 @@
     <h4>Games</h4>
     <div class="media-grid">
       {#each games as game}
-        <MediaCard title={game.title} id={game.id} type="game" />
+        <MediaCard title={game.title} id={game.id} musicId={game.musicId} type="game" flippedCard={flippedCard} />
       {/each}
     </div>
   </section>
@@ -108,7 +111,7 @@
     <h4>Shows</h4>
     <div class="media-grid">
       {#each shows as show}
-        <MediaCard title={show.title} year={show.year} api={show.api} type="show" />
+        <MediaCard title={show.title} year={show.year} api={show.api} musicId={show.musicId} type="show" flippedCard={flippedCard} />
       {/each}
     </div>
   </section>
@@ -117,7 +120,7 @@
     <h4>Movies</h4>
     <div class="media-grid">
       {#each movies as movie}
-        <MediaCard title={movie.title} year={movie.year} api={movie.api} type="movie" />
+        <MediaCard title={movie.title} year={movie.year} api={movie.api} musicId={movie.musicId} type="movie" flippedCard={flippedCard} />
       {/each}
     </div>
   </section>
@@ -126,7 +129,7 @@
     <h4>Books</h4>
     <div class="media-grid">
       {#each books as book}
-        <MediaCard title={book.title} author={book.author} type="book" />
+        <MediaCard title={book.title} author={book.author} type="book" flippedCard={flippedCard} />
       {/each}
     </div>
   </section>
