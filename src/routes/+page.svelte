@@ -1,5 +1,6 @@
 <script>
   import MediaCard from "$lib/MediaCard.svelte";
+  import TextCard from "$lib/TextCard.svelte";
 
   const shows = [
     { title: "Death Note", api: "omdb" },
@@ -86,9 +87,12 @@
 </svelte:head>
 
 <div class="aboutme">
-  <div class="intro-card">
-    <p>Hey there - I'm Justsnoopy30<br />
-    I like to write code sometimes, and I love a fair bit of media and games too</p>
+  <div style="margin: 0 auto;">
+    <TextCard>
+      <p>Hey there - I'm Justsnoopy30<br />
+      I like to write code sometimes, and I love a fair bit of media and games too</p>
+      <a href="/soc" class="soc-link">?</a>
+    </TextCard>
   </div>
 
   <section>
@@ -138,26 +142,19 @@
     gap: 2rem;
   }
 
-  /* card for intro text */
-  .intro-card {
-    /* background: rgba(43, 43, 43, 0.2); */
-    background-color: var(--color-gray-800);
-    border-radius: 8px;
-    padding: 1.5rem;
-    /* backdrop-filter: blur(2px); */
-    /* max-width: 650px; */
-    max-width: max-content;
-    margin: 0 auto;
-    margin-top: 15px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-    text-align: center;
-    /* background: linear-gradient(circle at center, rgba(var(--color1), 0.8) 0, rgba(var(--color1), 0) 50%) no-repeat; */
+  .soc-link {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    color: var(--color-gray-600);
+    text-decoration: none;
+    font-size: 1rem;
+    position: absolute;
+    bottom: 0;
+    right: 7px;
   }
 
-  .intro-card p {
-    margin: 0;
-    /* font-size: 1.1rem; */
-    /* line-height: 1.4; */
+  .soc-link:hover {
+    opacity: 1;
   }
 
   hr {
@@ -167,14 +164,6 @@
     border-top: 1px solid;
     opacity: 0.25;
     width: 50%;
-  }
-
-  p {
-    margin-block-start: 1em;
-    margin-block-end: 1em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-    padding-bottom: 0px;
   }
 
   h4 {

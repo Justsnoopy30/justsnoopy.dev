@@ -1,8 +1,7 @@
 <script>
 	import Header from '../lib/Header.svelte';
 	import '../app.css';
-	import logo from '$lib/images/svelte-logo.svg';
-	
+
 	let { children } = $props();
 	
 	/* View transitions */
