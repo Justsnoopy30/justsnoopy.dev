@@ -101,6 +101,8 @@
 	</div>
 </div>
 
+<div class="app-backdrop"></div>
+
 <div class="app">
 	<Header />
 
@@ -117,21 +119,31 @@
 
 
 <style>
+	.app-backdrop {
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		height: 100lvh;
+		background: rgba(27, 27, 27, 0.4);
+		backdrop-filter: blur(20px);
+		-webkit-backdrop-filter: blur(20px);
+		pointer-events: none;
+	}
+
 	.app {
 		display: flex;
 		flex-direction: column;
 		min-height: 100vh;
 		width: 100%;
 
-		/* Combines with width: 100vh on header to prevent shifting between pages */
-		overflow-x: hidden;
+		/* overflow: clip (both axes) clips without creating a BFC/scroll container,
+		   which would otherwise break position:fixed descendants on iOS Safari.
+		   No z-index here intentionally — avoids creating a stacking context,
+		   which can cause fixed children to scroll with the page on iOS. */
+		overflow: clip;
 
 		position: relative;
-		z-index: 1;
-
-		background: rgba(27, 27, 27, 0.4);
-		backdrop-filter: blur(20px);
-		-webkit-backdrop-filter: blur(20px);
 	}
 
 	main {

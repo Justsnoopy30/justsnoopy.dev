@@ -6,7 +6,7 @@
   let flippedCard = writable(null);
 
   const shows = [
-    { title: "Death Note", api: "omdb" },
+    { title: "Death Note", api: "omdb", musicId: "Bt3D3Ca9nww" },
     { title: "Jujutsu Kaisen" },
     { title: "Stranger Things" },
     { title: "Hunter x Hunter", api: "tvmaze", musicId: "faqmNf_fZlE"},
@@ -77,8 +77,8 @@
     { title: "Castle Crashers" },
     { title: "Undertale" },
     { title: "Super Mario Galaxy" },
-    { title: "Super Mario Galaxy 2" },
-    { title: "Rounds" },
+    { title: "Super Mario Galaxy 2", musicId: "zVmNAZ24VRI" },
+    { title: "Rounds", musicId: "tooNKvvZIPs" },
     { title: "SpiderHeck", id: "253637" },
     { title: "Bopl Battle" }
   ];

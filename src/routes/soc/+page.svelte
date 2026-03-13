@@ -28,8 +28,8 @@
   });
 
   function updateSpotlight() {
-    clientX = (lastRawX + window.scrollX) + "px";
-    clientY = (lastRawY + window.scrollY) + "px";
+    clientX = lastRawX + "px";
+    clientY = lastRawY + "px";
   }
 
   function onPointerMove(event) {
@@ -61,7 +61,7 @@
   }
 </script>
 
-<svelte:window on:scroll={updateSpotlight}></svelte:window>
+<svelte:window></svelte:window>
 <svelte:body on:mousemove={onPointerMove} ontouchmove={onPointerMove}></svelte:body>
 <div class="bg"></div>
 <div class="container">
@@ -139,7 +139,10 @@
     opacity: 0;
     transition: opacity 0.8s ease;
     position: fixed;
-    inset: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100lvh;
     /* height: 100%; */
     /* width: 100%; */
     background-image: radial-gradient(circle at var(--x, 50%) var(--y, 50%), transparent 6em, black 8em);
@@ -160,7 +163,10 @@
 
   .mask {
     position: fixed;
-    inset: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100lvh;
     background: black;
     opacity: 1;
     z-index: 1;
