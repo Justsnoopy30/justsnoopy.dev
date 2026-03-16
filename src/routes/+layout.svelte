@@ -1,6 +1,7 @@
 <script>
 	import Header from '../lib/Header.svelte';
 	import '../app.css';
+	import { page } from '$app/state';
 
 	let { children } = $props();
 	
@@ -10,6 +11,7 @@
 	
 	onNavigate((navigation) => {
 	    if (!document.startViewTransition) return;
+		
 	
 	    return new Promise((resolve) => {
 	        document.startViewTransition(async () => {
@@ -18,8 +20,11 @@
 	        });
 	    });
 	});
+
+	let moreBlur = $state(false);
 	
 	/* Moving gradient background */
+	/* TODO: Refactor to be more svelte'y and less imperative DOM manipulation */
 	import { onMount } from 'svelte';
 	onMount(() => {
 	  const interBubble = document.querySelector('.interactive');
@@ -33,12 +38,14 @@
 	  function handleActivity() {
 	      if (gradientBg) {
 	          gradientBg.classList.remove('visible');
+			  moreBlur = false;
 	      }
 
 	      clearTimeout(mouseTimeout);
 	      mouseTimeout = setTimeout(() => {
-	          if (gradientBg) {
+	          if (gradientBg && page.url.pathname != '/soc') {
 	              gradientBg.classList.add('visible');
+				  moreBlur = true;
 	          }
 	      }, 3000); // Wait for 3 seconds of inactivity
 	  }
@@ -63,11 +70,13 @@
 	  window.addEventListener('scroll', handleActivity, { passive: true });
 	  window.addEventListener('touchmove', handleActivity, { passive: true });
 	  window.addEventListener('wheel', handleActivity, { passive: true });
+	  onNavigate(() => handleActivity());
 	
 	  // Start the timer on mount so it appears if the user starts idle
 	  mouseTimeout = setTimeout(() => {
-	      if (gradientBg) {
+	      if (gradientBg && page.url.pathname != '/soc') {
 	          gradientBg.classList.add('visible');
+			  moreBlur = true;
 	      }
 	  }, 2000);
 
@@ -101,7 +110,7 @@
 	</div>
 </div>
 
-<div class="app-backdrop"></div>
+<div class="app-backdrop" class:more-blur={moreBlur}></div>
 
 <div class="app">
 	<Header />
@@ -126,9 +135,15 @@
 		right: 0;
 		height: 100lvh;
 		background: rgba(27, 27, 27, 0.4);
-		backdrop-filter: blur(20px);
-		-webkit-backdrop-filter: blur(20px);
+		backdrop-filter: blur(5px);
+		-webkit-backdrop-filter: blur(5px);
 		pointer-events: none;
+		transition: backdrop-filter 1s ease-out;
+	}
+
+	.app-backdrop.more-blur {
+		backdrop-filter: blur(20px);
+		transition: backdrop-filter 10s ease-in;
 	}
 
 	.app {

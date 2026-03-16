@@ -61,7 +61,9 @@
   }
 </script>
 
-<svelte:window></svelte:window>
+<svelte:head>
+  <meta name="robots" content="noindex" />
+</svelte:head>
 <svelte:body on:mousemove={onPointerMove} ontouchmove={onPointerMove}></svelte:body>
 <div class="bg"></div>
 <div class="container">
@@ -126,7 +128,7 @@
   }
 
   .cursor {
-    position: absolute; 
+    position: fixed; 
     left: var(--x); top: var(--y);
     transform: translate(-50%, -50%);
     pointer-events: none;
